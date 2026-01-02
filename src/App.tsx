@@ -1,5 +1,5 @@
-import { useState } from "react";
-// import Navbar from "./components/Navbar/Navbar";
+// import { useState } from "react";
+import Header from "./components/Header/Header";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import CountryPage from "./pages/CountryDetailsPage/CountryDetailsPage";
@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
    return (
       <>
-         {/* <Navbar /> */}
+         <Header />
          <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/country/:name" element={<CountryPage />} />
