@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
 import type { Theme, ThemeContextType } from "../types/index"; // ThemeContext manages the global light/dark theme state for the application
 
 /**
@@ -16,12 +16,11 @@ export const ThemeContext = createContext<ThemeContextType>({
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
    // Use custom useLocalStorage hook for the 'theme' key, default is 'light'
    const [theme, setTheme] = useLocalStorage<Theme>("theme", "light");
-   //    const [theme, setTheme] = useState<Theme>(() => {
-   //       const savedTheme = localStorage.getItem("theme");
-   //       return savedTheme === "dark" ? "dark" : "light";
-   //    });
 
-   // Toggle between light and dark themes
+   /**
+    * Switches between light and dark theme.
+    * Updates both React state and localStorage via the hook.
+    */
    function toggleTheme() {
       setTheme((prev) => (prev === "light" ? "dark" : "light"));
    }
