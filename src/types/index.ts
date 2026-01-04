@@ -4,6 +4,7 @@ export interface ThemeContextType {
    theme: Theme;
    toggleTheme: () => void;
 }
+
 // Holds search + region state + setters + filter function
 export interface AppContextType {
    search: string;
@@ -19,6 +20,8 @@ export interface Country {
       official: string;
    };
    region: string;
+   population: number;
+   capital?: string[];
    cca3: string;
    flags: { png: string; svg: string };
    // add more fields as needed
