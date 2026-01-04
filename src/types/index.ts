@@ -26,3 +26,26 @@ export interface Country {
    flags: { png: string; svg: string };
    // add more fields as needed
 }
+
+export interface CountryDetail {
+   name: {
+      common: string;
+      official: string;
+      nativeName?: {
+         [key: string]: { official: string; common: string };
+      };
+   };
+   
+   population: number;
+   region: string;
+   subregion?: string;
+   capital?: string[];
+   tld?: string[];
+   currencies?: { [key: string]: { name: string; symbol: string } };
+   //Example:  "USD": { "name": "United States dollar", "symbol": "$" },
+   languages?: { [key: string]: string };
+   borders?: string[];
+   flags: { png: string; svg: string };
+   cca3: string;
+}
+
