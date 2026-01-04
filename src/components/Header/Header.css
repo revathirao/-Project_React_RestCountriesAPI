@@ -1,23 +1,57 @@
+/* ===== HEADER ===== */
 .header {
+   width: 100%;
+   height: 80px;
    display: flex;
-   justify-content: space-between;
    align-items: center;
-   padding: 1rem 2rem;
-   background-color: lightgray;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
-.header.dark {
-   background-color: #333;
-   color: white;
+/* ===== INNER CONTAINER ===== */
+.header-container {
+   max-width: 1280px;
+   width: 100%;
+   margin: 0 auto;
+   padding: 0 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
-.nav-links a {
-   margin-right: 1rem;
-   text-decoration: none;
-   color: inherit;
+/* ===== TITLE ===== */
+.logo {
+   font-size: 1.4rem;
+   font-weight: 800;
+   margin: 0;
 }
 
-button {
-   padding: 0.5rem 1rem;
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+
+   background: none;
+   border: none; /* FM default */
    cursor: pointer;
+
+   font-size: 1rem;
+   font-weight: 600;
+}
+
+/* ===== MOON ===== */
+.moon {
+   font-size: 1.1rem;
+}
+
+/* ===== LIGHT MODE ===== */
+.header.light {
+   background-color: hsl(0, 0%, 100%);
+   color: hsl(200, 15%, 8%);
+}
+
+/* ===== DARK MODE ===== */
+.header.dark {
+   background-color: hsl(209, 23%, 22%);
+   color: hsl(0, 0%, 100%);
 }

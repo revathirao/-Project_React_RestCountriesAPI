@@ -11,12 +11,14 @@ export default function Header() {
    return (
       // Main navigation container
       <header className={`header ${themeCtx.theme}`}>
-         {/* <h2>Countries App</h2> */}
-         <div className="title">Where in the world?</div>
+         <div className="header-container">
+            <h1 className="logo">Where in the world?</h1>
 
-         <button onClick={themeCtx.toggleTheme}>
-            {themeCtx.theme === "light" ? "Dark" : "Light"} Mode
-         </button>
+            <button className="theme-toggle" onClick={themeCtx.toggleTheme}>
+               <span className="moon">🌙</span>
+               {themeCtx.theme === "light" ? "Dark Mode" : "Light Mode"}
+            </button>
+         </div>
       </header>
    );
 }
