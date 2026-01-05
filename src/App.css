@@ -4,3 +4,23 @@
    padding: 2rem;
    text-align: center;
 }
+
+.filter-container {
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap; /* so it wraps on mobile */
+   margin-bottom: 2rem;
+   max-width: 1280px;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 0 1rem; /* match country grid padding */
+}
+
+.filter-container > * {
+   margin-top: 1rem;
+   margin-bottom: 1rem; /* spacing for small screens */
+}
+
+.filter-dropdown {
+   min-width: 200px; /* keeps filter reasonable size */
+}

@@ -1,5 +1,6 @@
 /* Container grid */
-.countries-container {
+/* .countries-container { */
+.country-list {
    /* display: grid;
    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
    gap: 2.5rem;

@@ -8,12 +8,15 @@ export default function CountryList({
    loading,
    error,
 }: CountryListProps) {
+   // Show loading message while API request is in progress
    if (loading) return <Spinner />;
 
+   // Show error message if the fetch fails
    if (error) {
       return <ErrorMessage message={error} />;
    }
 
+   // If there is no data then null
    if (countries.length === 0) {
       return <p>No countries found</p>;
    }

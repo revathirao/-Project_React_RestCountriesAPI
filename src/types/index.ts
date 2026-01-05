@@ -33,6 +33,10 @@ export interface CountryListProps {
    error?: string | null;
 }
 
+export interface CountryCardProps {
+   country: Country;
+}
+
 export interface CountryDetail {
    name: {
       common: string;
@@ -64,4 +68,9 @@ export interface CountryDetail {
 export interface SearchProps {
    value: string;
    onChange: (value: string) => void;
+}
+
+export interface FilterDropdownProps {
+   value: string; // current selected region
+   onChange: (value: string) => void; // callback when user selects a new region
 }
