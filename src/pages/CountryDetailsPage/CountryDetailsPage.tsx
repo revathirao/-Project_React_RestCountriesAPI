@@ -149,7 +149,6 @@ export default function CountryDetailsPage() {
                   </div>
 
                   <div className="column-right">
-                     //{" "}
                      {/* The API returns TLDs as an array; we display the first one (primary) */}
                      <p>
                         <strong>Top Level Domain:</strong>{" "}

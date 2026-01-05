@@ -5,7 +5,7 @@
    text-align: center;
 }
 
-.filter-container {
+.controls {
    display: flex;
    justify-content: space-between;
    flex-wrap: wrap; /* so it wraps on mobile */
@@ -16,11 +16,85 @@
    padding: 0 1rem; /* match country grid padding */
 }
 
-.filter-container > * {
+.controls > * {
    margin-top: 1rem;
    margin-bottom: 1rem; /* spacing for small screens */
 }
 
+/* .controls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 0 1rem; /* matches country grid edges */
+/* gap: 1rem; spacing between search & filter */
+/* } */
+
+/* Search Input */
+.search-container {
+   position: relative;
+   width: 100%;
+   max-width: 480px; /* same as FM design */
+}
+
+.search-container input {
+   width: 100%;
+   padding: 0.75rem 2.5rem; /* space for icon on the left */
+   border-radius: 5px;
+   border: none;
+   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
+   font-size: 0.9rem;
+   background-color: var(--input-bg);
+}
+
+.search-container .search-icon {
+   position: absolute;
+   left: 1rem;
+   top: 50%;
+   transform: translateY(-50%);
+   pointer-events: none;
+}
+
+/* Filter Dropdown */
+.filter-container {
+   position: relative;
+   width: 200px;
+}
+
+.filter-container select {
+   width: 100%;
+   padding: 0.75rem 1rem;
+   border-radius: 5px;
+   border: none;
+   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
+   appearance: none; /* remove default arrow */
+   background-color: var(--input-bg);
+   font-size: 0.9rem;
+   cursor: pointer;
+}
+
+.filter-container .dropdown-icon {
+   position: absolute;
+   right: 1rem;
+   top: 50%;
+   transform: translateY(-50%);
+   pointer-events: none;
+   font-size: 0.8rem;
+}
+
 .filter-dropdown {
    min-width: 200px; /* keeps filter reasonable size */
+}
+
+@media (max-width: 600px) {
+   .controls {
+      flex-direction: column;
+      gap: 1.5rem;
+   }
+
+   .filter-container {
+      width: 100%;
+      max-width: 480px;
+   }
 }

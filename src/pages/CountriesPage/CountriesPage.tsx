@@ -1,88 +1,11 @@
-// import { useNavigate } from "react-router-dom";
-// import { useState } from "react";
-// // Import the custom useFetch hook created
-// import useFetch from "../../hooks/useFetch";
-// // Import the Spinner component to display a visual loading indicator (e.g., a rotating icon)
-// import Spinner from "../../components/Spinner/Spinner";
-// // Import the ErrorMessage component to display a user-friendly error alert or text if an operation fails
-// import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-// import { formatNumber } from "../../utils/formatPopulation";
-// import type { Country } from "../../types";
-// import "./CountriesPage.css";
-// import type React from "react";
-
-// export default function CountriesPage() {
-//    const navigate = useNavigate();
-
-//    /**
-//     * Call the useFetch hook
-//     * - data: API response
-//     * - loading: true while fetching
-//     * - error: error message if fetch fails
-//     */
-//    const { data, loading, error } = useFetch<Country[]>(
-//       "https://restcountries.com/v3.1/all?fields=name,cca3,region,flags,population,capital"
-//    );
-
-//    const [search, setSearch] = useState("");
-
-//    // Show loading message while API request is in progress
-//    if (loading) {
-//       return <Spinner />;
-//    }
-
-//    // Show error message if the fetch fails
-//    if (error) return <ErrorMessage message={error} />;
-//    // If there is no data then null
-//    if (!data) return null;
-
-//    return (
-//       <div className="countries-container">
-//          {/* ARRAY MAPPING:
-//           * We call .map() on the 'data' array. This iterates over every country object
-//           * inside the array and returns a new piece of JSX (UI) for each one.
-//           */}
-//          {data.map((country: Country) => (
-//
-//             <div
-//                key={country.cca3}
-//                className="country-card"
-//                onClick={() => navigate(`/country/${country.cca3}`)}>
-//                <img
-//                   src={country.flags.svg}
-//                   alt={country.name.common}
-//                   className="country-flag"
-//                />
-//                {/*
-//                 *DATA RENDERING:
-//                 *This accesses the 'common' property inside the 'name' object of
-//                 *the current country and displays it as text inside the paragraph.
-//                 */}
-//                <div className="country-info">
-//                   <h3>{country.name.common}</h3>
-//                   <p>
-//                      <strong>Population:</strong>{" "}
-//                      {formatNumber(country.population)}
-//                   </p>
-//                   <p>
-//                      <strong>Region:</strong> {country.region}
-//                   </p>
-//                   <p>
-//                      <strong>Capital:</strong> {country.capital?.[0]}
-//                   </p>
-//                </div>
-//             </div>
-//          ))}
-//       </div>
-//    );
-// }
-
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Search from "../../components/SearchBar/SearchBar";
 import FilterDropdown from "../../components/FilterDropdown/FilterDropdown";
 import CountryList from "../../components/CountryList/CountryList";
 import type { Country } from "../../types";
+import "./CountriesPage.css";
+
 export default function CountriesPage() {
    const [search, setSearch] = useState("");
    const [region, setRegion] = useState("");
@@ -112,9 +35,10 @@ export default function CountriesPage() {
     * @returns A filtered array of countries
     */
    function filterBySearch(countries: Country[], search: string) {
-      return countries.filter((country) =>
-         country.name.common.toLowerCase().includes(search.toLowerCase())
-      );
+      if (!search) return countries;
+
+      const regex = new RegExp(`^${search}`, "i"); // ^ = start of string, i = case-insensitive
+      return countries.filter((country) => regex.test(country.name.common));
    }
 
    // Filter by region
@@ -137,7 +61,7 @@ export default function CountriesPage() {
 
    return (
       <div className="countries-container">
-         <div className="filter-container">
+         <div className="controls">
             {/* Input component to update the search state */}
             <Search value={search} onChange={setSearch} />
 
