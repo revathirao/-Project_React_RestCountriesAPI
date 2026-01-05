@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 // Import the custom useFetch hook created
 import useFetch from "../../hooks/useFetch";
 // Import the Spinner component to display a visual loading indicator (e.g., a rotating icon)
@@ -7,7 +8,11 @@ import Spinner from "../../components/Spinner/Spinner";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { formatNumber } from "../../utils/formatPopulation";
 import type { Country } from "../../types";
+import Search from "../components/Search/Search";
+import FilterDropdown from "../components/FilterDropdown/FilterDropdown";
+import CountryList from "../components/CountryList/CountryList";
 import "./CountriesPage.css";
+// import type React from "react";
 
 export default function CountriesPage() {
    const navigate = useNavigate();
@@ -21,6 +26,9 @@ export default function CountriesPage() {
    const { data, loading, error } = useFetch<Country[]>(
       "https://restcountries.com/v3.1/all?fields=name,cca3,region,flags,population,capital"
    );
+
+   const [search, setSearch] = useState("");
+   const [region, setRegion] = useState("");
 
    // Show loading message while API request is in progress
    if (loading) {

@@ -27,6 +27,12 @@ export interface Country {
    // add more fields as needed
 }
 
+export interface CountryListProps {
+   countries: Country[];
+   loading: boolean;
+   error?: string | null;
+}
+
 export interface CountryDetail {
    name: {
       common: string;
@@ -49,8 +55,13 @@ export interface CountryDetail {
    cca3: string;
 }
 
-export interface CountryContextType {
-   countries: CountryDetail[]; // all countries
-   loading: boolean;
-   error?: string | null;
+// export interface CountryContextType {
+//    countries: CountryDetail[]; // all countries
+//    loading: boolean;
+//    error?: string | null;
+// }
+
+export interface SearchProps {
+   value: string;
+   onChange: (value: string) => void;
 }
