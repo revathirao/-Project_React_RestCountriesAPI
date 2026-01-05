@@ -35,7 +35,7 @@ export interface CountryDetail {
          [key: string]: { official: string; common: string };
       };
    };
-   
+
    population: number;
    region: string;
    subregion?: string;
@@ -49,3 +49,8 @@ export interface CountryDetail {
    cca3: string;
 }
 
+export interface CountryContextType {
+   countries: CountryDetail[]; // all countries
+   loading: boolean;
+   error?: string | null;
+}

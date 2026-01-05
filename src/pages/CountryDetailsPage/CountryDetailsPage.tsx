@@ -1,9 +1,12 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { useContext } from "react";
+
 import useFetch from "../../hooks/useFetch";
 import Spinner from "../../components/Spinner/Spinner";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import type { CountryDetail } from "../../types";
 import { formatNumber } from "../../utils/formatPopulation";
+import { CountryContext } from "../../context/CountriesContext";
 
 import "./CountryDetailsPage.css";
 
@@ -59,9 +62,12 @@ export default function CountryDetailsPage() {
    const navigate = useNavigate();
 
    // Fetch the country data from the API using the cca3 code
-   const { data, loading, error } = useFetch<CountryDetail>(
+   const { data, loading, error } = useFetch<CountryDetail[]>(
       `https://restcountries.com/v3.1/alpha/${cca3}`
    );
+
+   // Get all countries from context (for border names)
+   const { countries } = useContext(CountryContext);
 
    // Show loader while fetching
    if (loading) return <Spinner />;
@@ -69,23 +75,16 @@ export default function CountryDetailsPage() {
    // Show error message if fetch fails
    if (error) return <ErrorMessage message={error} />;
 
-   // If no data is returned, render null
-   if (!data) return null;
+   // If no data, return nothing
+   if (!data || !Array.isArray(data) || data.length === 0) {
+      return <p>Country not found</p>;
+   }
 
    // Normalize data: extract the first element if data is an array, otherwise use data as is
-   const country = Array.isArray(data) ? data[0] : data;
+   // const country = Array.isArray(data) ? data[0] : data;
+   const country = data[0];
 
    // Extract native name safely
-
-   // // nativeName is an object where keys are language codes (e.g., { "fra": { "common": "France" } })
-   // const nativeNameObj = country.name.nativeName;
-
-   // const nativeName = nativeNameObj
-   //    ? // 1. Get all objects in nativeName
-   //      // 2. Take the first one [0]
-   //      // 3. Use '??' as a safety fallback if the property is missin
-   //      Object.values(nativeNameObj)[0]?.common ?? country.name.common
-   //    : country.name.common; //Fallback to default common name
 
    // nativeName is an object with dynamic language keys: { "fra": { "common": "France" } }
    const nativeNameObj = country.name.nativeName;
@@ -103,6 +102,34 @@ export default function CountryDetailsPage() {
    // Format currencies and languages using helper functions
    const currencies = formatCurrencies(country.currencies);
    const languages = formatLanguages(country.languages);
+
+   // // Create an empty array to store border countries
+   // const borderCountries: CountryDetail[] = [];
+
+   // // If the country has borders
+   // if (country.borders) {
+   //    country.borders.forEach((code) => {
+   //       // Find the matching country from context
+   //       const found = countries.find((country) => country.cca3 === code);
+
+   //       // If a country is found, add it to the array
+   //       if (found) {
+   //          borderCountries.push(found);
+   //       }
+   //    });
+   // }
+
+   // Only compute border countries if both data and context exist
+   const borderCountries: CountryDetail[] = [];
+
+   if (country.borders && countries && countries.length > 0) {
+      country.borders.forEach((code) => {
+         const found = countries.find(
+            (c) => c.cca3.toUpperCase() === code.toUpperCase()
+         );
+         if (found) borderCountries.push(found);
+      });
+   }
 
    return (
       <div className="country-details-container">
@@ -171,20 +198,16 @@ export default function CountryDetailsPage() {
                      <strong>Border Countries:</strong>
                      <div className="borders-list">
                         {/*It loops through the array of border codes (e.g., ["FRA", "BEL", "DEU"]).*/}
-
-                        {country.borders.map((borderCca3: string) => (
+                        {borderCountries.map((borderCountry) => (
                            /*Link: A React Router component that changes the URL without a full page reload.
-*to={\/country/${borderCca3}`}**: This creates a dynamic path. Clicking the "FRA" button will take the user to /country/FRA`.
-*key={borderCca3}: Essential for React's performance; it uses the unique 3-letter code to track each list item.
-{borderCca3}This displays the 3-letter code (e.g., "USA") inside the button for the user to see.
-
-*/
+                            *to={\/country/${borderCca3}`}**: This creates a dynamic path. Clicking the "FRA" button will take the user to /country/FRA`.
+                            *key={borderCca3}: Essential for React's performance; it uses the unique 3-letter code to track each list item.
+                            *{borderCca3}This displays the 3-letter code (e.g., "USA") inside the button for the user to see.
+                            */
                            <Link
-                              /* borderCca3 is the 3-letter ISO code for each neighboring country*/
-                              key={borderCca3}
-                              to={`/country/${borderCca3}`}
-                              className="border-btn">
-                              {borderCca3}
+                              key={borderCountry.cca3}
+                              to={`/country/${borderCountry.cca3}`}>
+                              {borderCountry.name.common}
                            </Link>
                         ))}
                      </div>
