@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
  * @param {string} url - The endpoint URL to fetch data from.
  * @returns {object} An object containing the fetched `data`, `loading` status, and any `error` message.
  */
-export default function useFetch<T>(url: string) {
+// export default function useFetch<T>(url: string) {
+export default function useFetch<T>(url: string | null) {
    // State to store the data returned from the API
    const [data, setData] = useState<T | null>(null);
 

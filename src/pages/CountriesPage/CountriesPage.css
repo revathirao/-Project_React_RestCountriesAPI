@@ -74,3 +74,25 @@
    padding-left: 20px;
    margin-bottom: 10px;
 }
+
+.borders-list {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.75rem; /* slightly bigger gap */
+}
+
+.border-btn {
+   padding: 0.4rem 1.2rem; /* more comfortable size */
+   border-radius: 4px;
+   background-color: var(--colors-bg);
+   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+   text-decoration: none;
+   color: var(--colors-text); /* ensure readable color */
+   font-size: 0.9rem;
+   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.border-btn:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
