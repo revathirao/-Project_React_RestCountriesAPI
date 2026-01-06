@@ -71,28 +71,3 @@ export default defineConfig([
    },
 ]);
 ```
-
-Border Countries Feature
-
-Problem:
-Initially, border countries didn’t display because the app was trying to get their names from a context that no longer existed. There were also issues with the API URL and conditional hooks in TypeScript.
-
-Solution:
-
-After fetching the main country data, check if it has borders.
-
-Build a correct API URL using the border codes:
-
-https://restcountries.com/v3.1/alpha?codes=BRA,ARG&fields=name,cca3
-
-Use a custom useFetch hook to fetch border countries unconditionally (pass null if no borders).
-
-Render the border countries safely using .map() and show their full names.
-
-Added CSS styling to display border countries as buttons with spacing.
-
-Result:
-
-All border countries are now displayed as clickable buttons.
-
-Each button navigates to the details page of the selected border country.
