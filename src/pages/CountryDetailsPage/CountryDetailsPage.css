@@ -8,14 +8,22 @@
 }
 
 .back-btn {
+   background: var(--element-bg);
+   color: var(--text);
+   /* border: none; */
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
    padding: 0.5rem 2rem;
    background-color: var(--colors-bg);
-   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+   /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
    border: none;
    cursor: pointer;
    border-radius: 4px;
    margin-bottom: 2rem;
    text-align: left; /* <-- ensures text is left-aligned */
+}
+
+.back-btn:hover {
+   opacity: 0.9;
 }
 
 .details-content {
@@ -71,6 +79,12 @@
    color: inherit;
    text-align: center;
 }
+
+/* .country-details-container {
+   background-color: var(--bg);
+   color: var(--text);
+   min-height: 100vh;
+} */
 
 @media (max-width: 768px) {
    .details-content {

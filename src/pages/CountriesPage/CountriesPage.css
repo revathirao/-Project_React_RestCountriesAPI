@@ -1,24 +1,41 @@
-/* Container grid */
-/* .countries-container { */
-.country-list {
-   /* display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-   gap: 2.5rem;
-   padding: 2rem; */
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   gap: 60px;
-   margin-top: 25px;
+/* Pagelevelcontainer */
+/* .countries-container {
+   min-height: 100vh;
+   /* padding: 2rem; */
+/* background-color: var(--bg);
+   color: var(--text);
+} */
+
+.countries-container {
+   background-color: var(--bg);
+   min-height: 100vh;
+   padding: 2rem;
 }
 
+.country-list {
+   max-width: 1280px;
+   margin: 0 auto;
+
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+   gap: 3rem;
+}
+
+/* .country-list {
+   /* background-color: red; */
+/* display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 40px; */
+/* gap: 15rem;
+   margin-top: 25px;
+} */
+
 /* Individual card */
-.country-card {
-   /* background-color: var(--element-bg);
-   border-radius: 6px;
-   overflow: hidden;
+/* .country-card {
+   background-color: var(--element-bg);
    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
    cursor: pointer;
-   transition: transform 0.2s ease; */
+   transition: transform 0.2s ease;
    width: 100%;
    height: 100%;
    border-radius: 8px;
@@ -29,52 +46,85 @@
    flex-direction: column;
    transition: transform 0.3s, box-shadow 0.3s;
    padding-bottom: 35px;
+} */
+
+/* .country-card {
+   background-color: var(--element-bg);
+   box-shadow: var(--shadow);
+   border-radius: 5px;
+   overflow: hidden;
+   cursor: pointer;
+   transition: transform 0.25s ease;
+} */
+
+.country-card {
+   background: var(--element-bg);
+   border-radius: 8px;
+   overflow: hidden;
 }
 
+.country-card img {
+   width: 100%;
+   height: 160px;
+   object-fit: cover;
+   display: block;
+}
 .country-card:hover {
-   /* transform: translateY(-5px); */
    transform: translateY(-8px);
    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Flag image */
-.country-flag {
-   /* width: 100%;
-   height: 160px;
-   object-fit: cover; */
-   width: 100%;
-   height: auto;
-   flex-shrink: 0;
-   aspect-ratio: 16 / 9; /*Ensure flags are proportionate */
-   margin-bottom: 5px;
+.country-info h3 {
+   color: var(--text);
+   font-weight: 800;
+   margin-bottom: 1rem;
 }
+
+.country-info p {
+   color: var(--text-muted); /* 👈 lighter than title */
+   font-size: 0.875rem;
+}
+/* .country-info h3,
+.country-info p {
+   color: var(--text);
+} */
+/* Flag image */
+/* .country-flag { */
+/* width: 100%; */
+/* width: 100%; */
+/* height: auto; */
+/* flex-shrink: 0; */
+/* aspect-ratio: 16 / 9; Ensure flags are proportionate */
+/* margin-bottom: 5px;
+} */
 
 /* Country info */
 .country-info {
    padding: 1.5rem;
 }
-
-.country-info h3 {
-   /* margin-bottom: 1rem;
+/* 
+.country-info h3 { */
+/* margin-bottom: 1rem;
    font-size: 1.1rem; */
+/* color: var(--text);
 
    font-size: 1.2rem;
-   font-weight: 600;
-   color: hsl(200, 15%, 8%);
-   padding: 15px 20px 0;
+   font-weight: 600; */
+/* color: hsl(200, 15%, 8%); */
+/* padding: 15px 20px 0;
    margin-bottom: 10px;
    margin-top: 20px;
-}
+} */
 
-.country-info p {
+/* .country-info p {
    /* margin-bottom: 0.5rem;
    font-size: 0.9rem; */
-
+/* 
    font-size: 0.9rem;
    color: hsl(200, 15%, 40%);
    padding-left: 20px;
    margin-bottom: 10px;
-}
+} */
 
 .borders-list {
    display: flex;
@@ -85,10 +135,16 @@
 .border-btn {
    padding: 0.4rem 1.2rem; /* more comfortable size */
    border-radius: 4px;
-   background-color: var(--colors-bg);
-   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+   /* background: var(--border-bg); */
+   background-color: var(--element-bg);
+
+   color: var(--text);
+   /* background-color: var(--colors-bg); */
+   /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.15); */
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+
    text-decoration: none;
-   color: var(--colors-text); /* ensure readable color */
+   /* color: var(--colors-text); ensure readable color */
    font-size: 0.9rem;
    transition: transform 0.2s, box-shadow 0.2s;
 }

@@ -37,7 +37,7 @@ export default function FilterDropdown({
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
          </select>
-         <span className="dropdown-icon">⌄</span>
+         {/* <span className="dropdown-icon">⌄</span> */}
       </div>
    );
 }

@@ -1,10 +1,83 @@
-#root {
+/* #root {
    max-width: 1280px;
    margin: 0 auto;
    padding: 2rem;
    text-align: center;
+} */
+
+#root {
+   min-height: 100vh;
 }
 
+:root {
+   --bg: hsl(0, 0%, 98%);
+   --element-bg: hsl(0, 0%, 100%);
+   --text: hsl(200, 15%, 8%);
+   --input-bg: hsl(0, 0%, 100%);
+   --border-bg: hsl(0, 0%, 100%);
+   --shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+   --bg: hsl(207, 26%, 17%);
+   --element-bg: hsl(209, 23%, 22%);
+   --text: hsl(0, 0%, 100%);
+   --input-bg: hsl(209, 23%, 22%);
+   --border-bg: hsl(209, 23%, 22%);
+   --shadow: 0 2px 9px rgba(0, 0, 0, 0.3);
+}
+
+html,
+body {
+   margin: 0;
+   font-family: "Nunito Sans", sans-serif;
+   background-color: var(--bg);
+   color: var(--text);
+}
+/* :root {
+   --bg: hsl(0, 0%, 98%);
+   --element-bg: hsl(0, 0%, 100%);
+   --text: hsl(200, 15%, 8%);
+} */
+*/
+
+/* Light Mode Version */
+/* .header-container,
+.controls,
+.country-card,
+.country-list,
+.theme-toggle {
+   background-color: hsl(0, 0%, 100%); /* Light Elements */
+   /* color: hsl(200, 15%, 8%);
+   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+} */ 
+
+/* .controls,
+.country-listr,
+.country-card,
+.theme-toggle {
+   background-color: hsl(209, 23%, 22%);
+   /* color: hsl(0, 0%, 100%) !important; /* White text */
+   /* box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
+} */ 
+
+/* html,
+body,
+#root {
+   min-height: 100%;
+   margin: 0;
+} */
+
+[data-theme="dark"] {
+   --bg: hsl(207, 26%, 17%);
+   --element-bg: hsl(209, 23%, 22%);
+   --text: hsl(0, 0%, 100%);
+}
+
+body {
+   background-color: var(--bg);
+   color: var(--text);
+}
 .controls {
    display: flex;
    justify-content: space-between;
@@ -32,21 +105,71 @@
 /* } */
 
 /* Search Input */
-.search-container {
+/* .search-container {
    position: relative;
    width: 100%;
    max-width: 480px; /* same as FM design */
-}
+/* } */
 
-.search-container input {
-   width: 100%;
+/* .search-container input { */
+/* width: 100%;
    padding: 0.75rem 2.5rem; /* space for icon on the left */
-   border-radius: 5px;
+/* border-radius: 5px;
    border: none;
    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
    font-size: 0.9rem;
    background-color: var(--input-bg);
+} */
+
+/* .controls {
+   max-width: 1280px;
+   margin: 0 auto 2.5rem;
+
+   display: flex;
+   justify-content: space-between;
+   gap: 1.5rem;
+   flex-wrap: wrap;
+} */
+/* 
+.controls {
+   display: flex;
+   justify-content: space-between;
+   align-items: center; 
+} */
+
+.search-container {
+   position: relative;
+   width: 100%;
+   max-width: 400px;
 }
+
+.search-container input {
+   /* width: 100%; */
+   padding: 1rem 1rem 1rem 3.5rem;
+   width: 100%;
+   /* padding: 1rem 1rem 1rem 3.5rem; space for icon */
+   border: none;
+   border-radius: 6px;
+   background: var(--element-bg);
+   color: var(--text);
+}
+
+/* .search-container svg {
+   position: absolute;
+   left: 1.5rem;
+   top: 50%;
+   transform: translateY(-50%);
+   pointer-events: none;
+} */
+/* .search-container input,
+.filter-container select { */
+/* background-color: var(--input-bg); */
+/* color: var(--text); */
+/* border: none; */
+/* border-radius: 5px; */
+/* padding: 1rem; */
+/* box-shadow: var(--shadow); */
+/* } */
 
 .search-container .search-icon {
    position: absolute;
@@ -57,23 +180,29 @@
 }
 
 /* Filter Dropdown */
-.filter-container {
+/* .filter-container {
    position: relative;
    width: 200px;
-}
+} */
 
 .filter-container select {
+   color: var(--text);
    width: 100%;
    padding: 0.75rem 1rem;
    border-radius: 5px;
    border: none;
    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
-   appearance: none; /* remove default arrow */
+   /* appearance: none; remove default arrow */
    background-color: var(--input-bg);
    font-size: 0.9rem;
    cursor: pointer;
 }
 
+.filter-container option {
+   background: var(--element-bg);
+   color: var(--text);
+}
+/* 
 .filter-container .dropdown-icon {
    position: absolute;
    right: 1rem;
@@ -81,11 +210,11 @@
    transform: translateY(-50%);
    pointer-events: none;
    font-size: 0.8rem;
-}
+} */
 
-.filter-dropdown {
+/* .filter-dropdown {
    min-width: 200px; /* keeps filter reasonable size */
-}
+/* } */
 
 @media (max-width: 600px) {
    .controls {
