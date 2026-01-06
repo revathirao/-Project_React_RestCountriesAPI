@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
  * @param initialValue - The default value if nothing is in localStorage
  * @returns [value, setValue] - The stateful value and setter function
  */
-
 export default function useLocalStorage<T>(key: string, initialValue: T) {
    // Initialize state with a "Lazy Initializer" function
    const [value, setValue] = useState<T>(() => {

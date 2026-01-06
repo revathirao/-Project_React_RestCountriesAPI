@@ -5,15 +5,6 @@ export interface ThemeContextType {
    toggleTheme: () => void;
 }
 
-// Holds search + region state + setters + filter function
-// export interface AppContextType {
-//    search: string;
-//    setSearch: (value: string) => void;
-//    region: string;
-//    setRegion: (value: string) => void;
-//    filterCountries: (countries: Country[]) => Country[];
-// }
-
 export interface Country {
    name: {
       common: string;
@@ -57,12 +48,6 @@ export interface CountryDetail {
    flags: { png: string; svg: string };
    cca3: string;
 }
-
-// export interface CountryContextType {
-//    countries: CountryDetail[]; // all countries
-//    loading: boolean;
-//    error?: string | null;
-// }
 
 export interface SearchProps {
    value: string;

@@ -1,4 +1,4 @@
-import { createContext,    useEffect } from "react";
+import { createContext, useEffect } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import type { Theme, ThemeContextType } from "../types/index"; // ThemeContext manages the global light/dark theme state for the application
 
@@ -25,9 +25,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme((prev) => (prev === "light" ? "dark" : "light"));
    }
 
+   // Sync the theme state with the HTML 'data-theme' attribute whenever the theme changes
    useEffect(() => {
       document.documentElement.setAttribute("data-theme", theme);
    }, [theme]);
+
+   // Provide the current theme and the toggle function to all child components via Context API
    return (
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
          {children}

@@ -10,11 +10,9 @@
 .back-btn {
    background: var(--element-bg);
    color: var(--text);
-   /* border: none; */
    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
    padding: 0.5rem 2rem;
    background-color: var(--colors-bg);
-   /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
    border: none;
    cursor: pointer;
    border-radius: 4px;
@@ -72,19 +70,15 @@
 
 .border-btn {
    padding: 0.3rem 1rem;
-   background-color: var(--colors-bg);
+   background-color: var(--element-bg);
+   color: var(--text);
    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
    border-radius: 2px;
    text-decoration: none;
-   color: inherit;
    text-align: center;
+   font-size: 0.9rem;
+   transition: transform 0.2s, box-shadow 0.2s;
 }
-
-/* .country-details-container {
-   background-color: var(--bg);
-   color: var(--text);
-   min-height: 100vh;
-} */
 
 @media (max-width: 768px) {
    .details-content {

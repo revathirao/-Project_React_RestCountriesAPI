@@ -35,9 +35,13 @@ export default function CountriesPage() {
     * @returns A filtered array of countries
     */
    function filterBySearch(countries: Country[], search: string) {
+      // If the search input is empty, return the full list of countries
       if (!search) return countries;
 
+      // Create a regex to match the search string at the beginning of the country name
       const regex = new RegExp(`^${search}`, "i"); // ^ = start of string, i = case-insensitive
+
+      // Return only the countries where the common name matches the search pattern
       return countries.filter((country) => regex.test(country.name.common));
    }
 
@@ -48,7 +52,9 @@ export default function CountriesPage() {
     * @returns A filtered array of countries
     */
    function filterByRegion(countries: Country[], region: string) {
-      if (!region) return countries;
+      if (!region) return countries; // Return original list if the filter is cleared
+
+      // Return only countries whose region property matches the selected region
       return countries.filter((country) => country.region === region);
    }
 

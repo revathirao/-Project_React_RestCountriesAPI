@@ -1,14 +1,9 @@
-/* #root {
-   max-width: 1280px;
-   margin: 0 auto;
-   padding: 2rem;
-   text-align: center;
-} */
-
+/* Ensure the root container spans at least the full height of the viewport */
 #root {
    min-height: 100vh;
 }
 
+/* Light theme variable definitions (default) */
 :root {
    --bg: hsl(0, 0%, 98%);
    --element-bg: hsl(0, 0%, 100%);
@@ -18,6 +13,7 @@
    --shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
 }
 
+/* Dark theme variable overrides applied via data-theme attribute */
 [data-theme="dark"] {
    --bg: hsl(207, 26%, 17%);
    --element-bg: hsl(209, 23%, 22%);
@@ -27,6 +23,7 @@
    --shadow: 0 2px 9px rgba(0, 0, 0, 0.3);
 }
 
+/* Global reset and base typography/color styles */
 html,
 body {
    margin: 0;
@@ -34,50 +31,8 @@ body {
    background-color: var(--bg);
    color: var(--text);
 }
-/* :root {
-   --bg: hsl(0, 0%, 98%);
-   --element-bg: hsl(0, 0%, 100%);
-   --text: hsl(200, 15%, 8%);
-} */
-*/
 
-/* Light Mode Version */
-/* .header-container,
-.controls,
-.country-card,
-.country-list,
-.theme-toggle {
-   background-color: hsl(0, 0%, 100%); /* Light Elements */
-   /* color: hsl(200, 15%, 8%);
-   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
-} */ 
-
-/* .controls,
-.country-listr,
-.country-card,
-.theme-toggle {
-   background-color: hsl(209, 23%, 22%);
-   /* color: hsl(0, 0%, 100%) !important; /* White text */
-   /* box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
-} */ 
-
-/* html,
-body,
-#root {
-   min-height: 100%;
-   margin: 0;
-} */
-
-[data-theme="dark"] {
-   --bg: hsl(207, 26%, 17%);
-   --element-bg: hsl(209, 23%, 22%);
-   --text: hsl(0, 0%, 100%);
-}
-
-body {
-   background-color: var(--bg);
-   color: var(--text);
-}
+/* Layout container for search bar and region filter dropdown */
 .controls {
    display: flex;
    justify-content: space-between;
@@ -89,88 +44,30 @@ body {
    padding: 0 1rem; /* match country grid padding */
 }
 
+/* Spacing for individual control elements (search and filter) */
 .controls > * {
    margin-top: 1rem;
    margin-bottom: 1rem; /* spacing for small screens */
 }
 
-/* .controls {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  max-width: 1280px;
-  margin: 2rem auto;
-  padding: 0 1rem; /* matches country grid edges */
-/* gap: 1rem; spacing between search & filter */
-/* } */
-
-/* Search Input */
-/* .search-container {
-   position: relative;
-   width: 100%;
-   max-width: 480px; /* same as FM design */
-/* } */
-
-/* .search-container input { */
-/* width: 100%;
-   padding: 0.75rem 2.5rem; /* space for icon on the left */
-/* border-radius: 5px;
-   border: none;
-   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
-   font-size: 0.9rem;
-   background-color: var(--input-bg);
-} */
-
-/* .controls {
-   max-width: 1280px;
-   margin: 0 auto 2.5rem;
-
-   display: flex;
-   justify-content: space-between;
-   gap: 1.5rem;
-   flex-wrap: wrap;
-} */
-/* 
-.controls {
-   display: flex;
-   justify-content: space-between;
-   align-items: center; 
-} */
-
+/* Wrapper for the search input and its absolute-positioned icon */
 .search-container {
    position: relative;
    width: 100%;
    max-width: 400px;
 }
 
+/* Search input field styling with space on the left for the icon */
 .search-container input {
-   /* width: 100%; */
    padding: 1rem 1rem 1rem 3.5rem;
    width: 100%;
-   /* padding: 1rem 1rem 1rem 3.5rem; space for icon */
    border: none;
    border-radius: 6px;
    background: var(--element-bg);
    color: var(--text);
 }
 
-/* .search-container svg {
-   position: absolute;
-   left: 1.5rem;
-   top: 50%;
-   transform: translateY(-50%);
-   pointer-events: none;
-} */
-/* .search-container input,
-.filter-container select { */
-/* background-color: var(--input-bg); */
-/* color: var(--text); */
-/* border: none; */
-/* border-radius: 5px; */
-/* padding: 1rem; */
-/* box-shadow: var(--shadow); */
-/* } */
-
+/* Position the search icon inside the input field */
 .search-container .search-icon {
    position: absolute;
    left: 1rem;
@@ -179,12 +76,7 @@ body {
    pointer-events: none;
 }
 
-/* Filter Dropdown */
-/* .filter-container {
-   position: relative;
-   width: 200px;
-} */
-
+/* Custom styling for the region filter select dropdown */
 .filter-container select {
    color: var(--text);
    width: 100%;
@@ -192,30 +84,18 @@ body {
    border-radius: 5px;
    border: none;
    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05);
-   /* appearance: none; remove default arrow */
    background-color: var(--input-bg);
    font-size: 0.9rem;
    cursor: pointer;
 }
 
+/* Styling for dropdown options to match the current theme */
 .filter-container option {
    background: var(--element-bg);
    color: var(--text);
 }
-/* 
-.filter-container .dropdown-icon {
-   position: absolute;
-   right: 1rem;
-   top: 50%;
-   transform: translateY(-50%);
-   pointer-events: none;
-   font-size: 0.8rem;
-} */
 
-/* .filter-dropdown {
-   min-width: 200px; /* keeps filter reasonable size */
-/* } */
-
+/* Responsive adjustments for screens smaller than 600px */
 @media (max-width: 600px) {
    .controls {
       flex-direction: column;

@@ -13,7 +13,6 @@ export default function formatNativeName(country: CountryDetail): string {
        * 2.[0]?.common-Safely gets the first object’s .common name
        * 3.?. prevents crashes if the array is empty
        * 4.?? country.name.common -Fallback to the normal country name if no native name exists*/
-      // (Object.values(nativeNameObj) as { common: string }[])[0]?.common ??
       Object.values(nativeNameObj) as { common: string }[];
    return nativeNamesArray[0]?.common ?? country.name.common;
 }
