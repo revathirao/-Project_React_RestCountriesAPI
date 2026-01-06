@@ -62,5 +62,5 @@ export default function useFetch<T>(url: string) {
    }, [url]); // Re-run the effect whenever the URL changes
 
    // Return the current state of the fetch operation
-   return { data, loading, error };
+   return { data, loading, error } as const;
 }

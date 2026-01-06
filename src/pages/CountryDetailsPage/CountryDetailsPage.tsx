@@ -33,7 +33,7 @@ export default function CountryDetailsPage() {
       `https://restcountries.com/v3.1/alpha/${cca3}`
    );
 
-   // // Extract the country object safely for the next hook
+   // Extract the country object safely for the next hook
    const country = data && Array.isArray(data) ? data[0] : null;
 
    //Show loader while fetching

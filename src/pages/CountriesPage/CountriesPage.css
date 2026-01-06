@@ -35,6 +35,10 @@
    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+.country-card:focus-within {
+   outline: 2px solid var(--text);
+}
+
 /* Individual country Name */
 /* Country info */
 .country-info h3 {
@@ -52,3 +56,4 @@
 .country-info {
    padding: 1.5rem;
 }
+

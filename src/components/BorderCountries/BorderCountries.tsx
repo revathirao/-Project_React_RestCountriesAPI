@@ -1,6 +1,8 @@
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import type { CountryDetail, BorderCountriesProps } from "../../types";
+import Spinner from "../../components/Spinner/Spinner";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 export default function BorderCountries({ borderCodes }: BorderCountriesProps) {
    // Exit early if borderCodes is null, undefined, or an empty collection
@@ -12,13 +14,23 @@ export default function BorderCountries({ borderCodes }: BorderCountriesProps) {
    )}&fields=name,cca3`;
 
    // HOOK: Fetch border countries
-   const { data: borderCountries } = useFetch<CountryDetail[]>(borderUrl);
+   const {
+      data: borderCountries,
+      loading,
+      error,
+   } = useFetch<CountryDetail[]>(borderUrl);
+
+   if (loading) return <Spinner />;
+
+   if (error) return <ErrorMessage message={error} />;
 
    // Return null if borderCountries is undefined, null, or an empty array to prevent processing errors
    if (!borderCountries || borderCountries.length === 0) return null;
 
    return (
-      <div className="border-countries">
+      <section
+         className="border-countries"
+         aria-labelledby="border-countries-heading">
          <strong>Border Countries:</strong>
          <div className="borders-list">
             {/*It loops through the array of border codes (e.g., ["FRA", "BEL", "DEU"]).*/}
@@ -36,6 +48,6 @@ export default function BorderCountries({ borderCodes }: BorderCountriesProps) {
                </Link>
             ))}
          </div>
-      </div>
+      </section>
    );
 }

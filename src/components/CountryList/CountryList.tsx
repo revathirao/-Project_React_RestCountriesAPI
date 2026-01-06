@@ -18,7 +18,7 @@ export default function CountryList({
 
    // If there is no data then null
    if (countries.length === 0) {
-      return <p>No countries found</p>;
+      return <p role="alert">No countries found</p>;
    }
 
    return (

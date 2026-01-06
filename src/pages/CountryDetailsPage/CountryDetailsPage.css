@@ -80,6 +80,10 @@
    transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.border-btn:focus-visible {
+   outline: 2px solid #000; /* or color that meets contrast */
+}
+
 @media (max-width: 768px) {
    .details-content {
       flex-direction: column;

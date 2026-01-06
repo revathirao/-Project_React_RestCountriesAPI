@@ -8,6 +8,7 @@ export default function CountryCard({ country }: CountryCardProps) {
    return (
       <div
          className="country-card"
+         role= "button"
          /*
           *Clicking the card triggers navigation to a dynamic route.
           *It uses the country's unique 3-letter code (cca3) as a URL parameter.

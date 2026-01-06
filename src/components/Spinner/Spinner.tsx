@@ -6,7 +6,7 @@ import "./Spinner.css";
  */
 export default function Spinner() {
    return (
-      <div className="spinner-container">
+      <div role="status" className="spinner-container" aria-label="Loading">
          <div className="spinner">Loading...</div>
       </div>
    );
