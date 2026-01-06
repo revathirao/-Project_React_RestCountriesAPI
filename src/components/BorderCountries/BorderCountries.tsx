@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import type { CountryDetail, BorderCountriesProps } from "../../types";
 
 export default function BorderCountries({ borderCodes }: BorderCountriesProps) {
+   // Exit early if borderCodes is null, undefined, or an empty collection
    if (!borderCodes || borderCodes.length === 0) return null;
-   //    // Extract the country object safely for the next hook
-   //    const country = data && Array.isArray(data) ? data[0] : null;
 
    // Prepare the URL for borders.
    const borderUrl = `https://restcountries.com/v3.1/alpha?codes=${borderCodes.join(
@@ -15,6 +14,7 @@ export default function BorderCountries({ borderCodes }: BorderCountriesProps) {
    // HOOK: Fetch border countries
    const { data: borderCountries } = useFetch<CountryDetail[]>(borderUrl);
 
+   // Return null if borderCountries is undefined, null, or an empty array to prevent processing errors
    if (!borderCountries || borderCountries.length === 0) return null;
 
    return (

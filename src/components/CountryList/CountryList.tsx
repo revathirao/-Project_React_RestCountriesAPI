@@ -22,6 +22,7 @@ export default function CountryList({
    }
 
    return (
+      // Render a list of CountryCard components by mapping through the countries array
       <div className="country-list">
          {countries.map((country) => (
             <CountryCard key={country.cca3} country={country} />

@@ -14,9 +14,8 @@ export default function CountryCard({ country }: CountryCardProps) {
           */
          onClick={() => navigate(`/country/${country.cca3}`)}>
          {/* Displays the country's flag image using a vector source for high resolution*/}
-
          <img
-            src={country.flags.svg}  // URL to the .svg flag image from the API
+            src={country.flags.svg} // URL to the .svg flag image from the API
             alt={country.name.common}
             className="country-flag"
          />
