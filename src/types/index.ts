@@ -6,13 +6,13 @@ export interface ThemeContextType {
 }
 
 // Holds search + region state + setters + filter function
-export interface AppContextType {
-   search: string;
-   setSearch: (value: string) => void;
-   region: string;
-   setRegion: (value: string) => void;
-   filterCountries: (countries: Country[]) => Country[];
-}
+// export interface AppContextType {
+//    search: string;
+//    setSearch: (value: string) => void;
+//    region: string;
+//    setRegion: (value: string) => void;
+//    filterCountries: (countries: Country[]) => Country[];
+// }
 
 export interface Country {
    name: {
@@ -24,7 +24,6 @@ export interface Country {
    capital?: string[];
    cca3: string;
    flags: { png: string; svg: string };
-   // add more fields as needed
 }
 
 export interface CountryListProps {
@@ -73,4 +72,8 @@ export interface SearchProps {
 export interface FilterDropdownProps {
    value: string; // current selected region
    onChange: (value: string) => void; // callback when user selects a new region
+}
+
+export interface BorderCountriesProps {
+   borderCodes?: string[]; // e.g., ["FRA", "DEU", "BEL"]
 }

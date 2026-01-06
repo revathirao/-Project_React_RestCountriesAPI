@@ -192,17 +192,16 @@
 //    );
 // }
 
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import Spinner from "../../components/Spinner/Spinner";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import type { CountryDetail } from "../../types";
-import {
-   formatNumber,
-   formatCurrencies,
-   formatLanguages,
-   formatNativeName,
-} from "../../utils/formatPopulation";
+import { formatNumber } from "../../utils/formatPopulation";
+import formatCurrencies from "../../utils/formatCurrencies";
+import formatLanguages from "../../utils/formatLanguages";
+import formatNativeName from "../../utils/formatNativeName";
+import BorderCountries from "../../components/BorderCountries/BorderCountries";
 
 import "./CountryDetailsPage.css";
 
@@ -229,22 +228,8 @@ export default function CountryDetailsPage() {
       `https://restcountries.com/v3.1/alpha/${cca3}`
    );
 
-   // Extract the country object safely for the next hook
+   // // Extract the country object safely for the next hook
    const country = data && Array.isArray(data) ? data[0] : null;
-
-   // Prepare the URL for borders.
-   // If country or borders don't exist yet, we pass null to the hook.
-   const borderUrl =
-      country?.borders && country.borders.length > 0
-         ? `https://restcountries.com/v3.1/alpha?codes=${country.borders.join(
-              ","
-           )}&fields=name,cca3`
-         : null;
-   console.log("Border URL:", borderUrl); //for debugging
-
-   // HOOK 2: Fetch border countries
-   // This MUST be called here, before any 'return' statements. (this ws giving the eeror)
-   const { data: borderCountries } = useFetch<CountryDetail[]>(borderUrl);
 
    /**
     * CONDITIONAL RETURNS
@@ -260,7 +245,7 @@ export default function CountryDetailsPage() {
    // If no data, return nothing
    if (!country) return <p>Country not found</p>;
 
-   // Format currencies and languages using helper functions
+   // Format currencies, nativeName and languages using helper functions
    const currencies = formatCurrencies(country.currencies);
    const languages = formatLanguages(country.languages);
    const nativeName = formatNativeName(country);
@@ -280,7 +265,6 @@ export default function CountryDetailsPage() {
                alt={country.name.common}
                className="details-flag"
             />
-
             {/* Country info */}
             <div className="details-info">
                <h1>{country.name.common}</h1>
@@ -322,30 +306,8 @@ export default function CountryDetailsPage() {
                      </p>
                   </div>
                </div>
-
-               {/* Border countries
-//                 * Only rendered if borders exist (islands are ignored) */}
-               {borderCountries && borderCountries.length > 0 && (
-                  <div className="border-countries">
-                     <strong>Border Countries:</strong>
-                     <div className="borders-list">
-                        {/*It loops through the array of border codes (e.g., ["FRA", "BEL", "DEU"]).*/}
-                        {borderCountries.map((borderCountry) => (
-                           /*Link: A React Router component that changes the URL without a full page reload.
-//                             *to={\/country/${borderCca3}`}**: This creates a dynamic path. Clicking the "FRA" button will take the user to /country/FRA`.
-//                             *key={borderCca3}: Essential for React's performance; it uses the unique 3-letter code to track each list item.
-//                             *{borderCca3}This displays the 3-letter code (e.g., "USA") inside the button for the user to see.
-//                             */
-                           <Link
-                              key={borderCountry.cca3}
-                              to={`/country/${borderCountry.cca3}`}
-                              className="border-btn">
-                              {borderCountry.name.common}
-                           </Link>
-                        ))}
-                     </div>
-                  </div>
-               )}
+               {/*BorderCountries*/}
+               <BorderCountries borderCodes={country.borders} />
             </div>
          </div>
       </div>

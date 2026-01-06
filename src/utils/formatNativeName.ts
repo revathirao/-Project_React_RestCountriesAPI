@@ -1,6 +1,6 @@
 import type { CountryDetail } from "../types";
 
-export function formatNativeName(country: CountryDetail): string {
+export default function formatNativeName(country: CountryDetail): string {
    //nativeName is an object with dynamic language keys: { "fra": { "common": "France" } }
    const nativeNameObj = country.name.nativeName;
 
