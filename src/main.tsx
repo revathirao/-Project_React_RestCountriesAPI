@@ -7,10 +7,20 @@ import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
    <StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename="/-Project_React_RestCountriesAPI">
          <ThemeProvider>
             <App />
          </ThemeProvider>
       </BrowserRouter>
    </StrictMode>
 );
+
+// ReactDOM.createRoot(document.getElementById("root")!).render(
+//    <React.StrictMode>
+//       <ThemeProvider>
+//          <HashRouter basename="/-Project_React_RestCountriesAPI">
+//             <App />
+//          </HashRouter>
+//       </ThemeProvider>
+//    </React.StrictMode>
+// );
