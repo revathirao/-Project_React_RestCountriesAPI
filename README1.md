@@ -285,4 +285,4 @@ Created CSS variables to manage color changes and made sure the theme switcher u
 
 ## Deployment URL
 
-https://revathirao.github.io/-Project_React_RestCountriesAPI/
+http://localhost:5173/
