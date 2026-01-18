@@ -46,12 +46,12 @@ The theme is switched using the dark mode toggle button.
 
 ## Technologies Used
 
--  **React**: For building the user interface.
--  **TypeScript**: Ensures type safety throughout the application.
--  **CSS**: For styling the app with a responsive design.
--  **React Router**: For handling routing between pages (Country List and Country Detail).
--  **Custom Hooks**: Used for handling API calls (e.g., `useFetch`).
--  **API Integration**: The app integrates with an external API (e.g., REST Countries API) to fetch data on countries
+- **React**: For building the user interface.
+- **TypeScript**: Ensures type safety throughout the application.
+- **CSS**: For styling the app with a responsive design.
+- **React Router**: For handling routing between pages (Country List and Country Detail).
+- **Custom Hooks**: Used for handling API calls (e.g., `useFetch`).
+- **API Integration**: The app integrates with an external API (e.g., REST Countries API) to fetch data on countries
 
 ### Getting Started
 
@@ -278,11 +278,11 @@ Created CSS variables to manage color changes and made sure the theme switcher u
 
 ## What I Learned
 
--  Improved understanding of React hooks and dependency management
--  Learned to structure reusable components with TypeScript
--  Gained experience handling API data and edge cases
--  Refaactoring the pages
+- Improved understanding of React hooks and dependency management
+- Learned to structure reusable components with TypeScript
+- Gained experience handling API data and edge cases
+- Refaactoring the pages
 
 ## Deployment URL
 
-http://localhost:5173/
+https://revathi8.netlify.app/
